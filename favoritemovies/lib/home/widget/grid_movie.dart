@@ -1,4 +1,5 @@
 import 'package:favoritemovies/home/data/models/flim.dart';
+import 'package:favoritemovies/resources/strings_manger.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteMoviesScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class FavoriteMoviesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorite Movies'),
+        title: const Text(AppStrings.favoriteMovies),
       ),
       body: FavoriteMoviesGrid(films: films),
     );
@@ -38,10 +39,6 @@ class FavoriteMoviesGrid extends StatelessWidget {
           itemCount: films.length,
           itemBuilder: (context, index) {
             return Card(
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.network(

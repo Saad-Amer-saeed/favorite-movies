@@ -1,5 +1,6 @@
 import 'package:favoritemovies/home/page/home.dart';
 import 'package:favoritemovies/resources/color_manager.dart';
+import 'package:favoritemovies/resources/routes_manager.dart';
 import 'package:favoritemovies/splash/bloc/splash_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,9 +36,9 @@ class _SplashState extends State<Splash> {
       listenWhen: (previous, current) => current is SplashActionState,
       listener: (context, state) {
         if (state is SplasNavigatetoHome) {
-          Navigator.pushReplacement(
+          Navigator.pushReplacementNamed(
             context,
-            MaterialPageRoute(builder: (context) => Home()),
+            Routes.home,
           );
         }
       },

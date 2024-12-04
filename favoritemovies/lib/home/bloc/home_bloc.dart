@@ -13,23 +13,18 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
-    on<Loadfilmseven>(_loadfilmseven);
+    on<FeachingFlimsEvent>(_feachingFlims);
   }
 
-  FutureOr<void> _loadfilmseven(
-      Loadfilmseven event, Emitter<HomeState> emit) async {
-    // Emit loading state to show a spinner
+  FutureOr<void> _feachingFlims(
+      FeachingFlimsEvent event, Emitter<HomeState> emit) async {
     emit(LoadingState());
 
     try {
       final flimsWebServices = FlimsWebServices();
       final flimsRepository = FlimsRepository(flimsWebServices);
       final films = await flimsRepository.getAllFlims();
-
-      // Emit the loaded state with the retrieved data
-      emit(LoadFilmsState(films));
-    } catch (e) {
-      // Emit an error state if fetching fails
-    }
+      emit(FeachingDatasucess(films));
+    } catch (e) {}
   }
 }

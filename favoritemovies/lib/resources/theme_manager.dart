@@ -16,10 +16,11 @@ ThemeData getApplicationTheme() {
     //   primary: ColorManager.primary,
     //   secondary: ColorManager.grey, // Accent color as secondary
     // ),
-    // cardTheme: const CardTheme(
-    //   color: ColorManager.white,
-    //   shadowColor: ColorManager.grey,
-    //   elevation: AppSize.s4,
+    // cardTheme: CardTheme(
+    //   elevation: 4,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(12),
+    //   ),
     // ),
     // appBarTheme: AppBarTheme(
     //     centerTitle: true,
@@ -30,7 +31,7 @@ ThemeData getApplicationTheme() {
     //         color: ColorManager.white, fontSize: FontSize.s16)),
     appBarTheme: const AppBarTheme(
         centerTitle: true,
-        color: ColorManager.lightdark,
+        color: ColorManager.dark,
         // elevation: AppSize.s4,
         // shadowColor: ColorManager.primaryOpacity70,
         // titleTextStyle: getRegularStyle(

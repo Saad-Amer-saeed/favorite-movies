@@ -3,7 +3,6 @@ import 'package:favoritemovies/home/widget/grid_movie.dart';
 import 'package:favoritemovies/home/widget/shimmer_movie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer/shimmer.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,7 +15,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    homeBloc.add(Loadfilmseven()); // Trigger the event to fetch movies
+    homeBloc.add(FeachingFlimsEvent()); // Trigger the event to fetch movies
   }
 
   @override
@@ -29,22 +28,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       bloc: homeBloc,
-      listenWhen: (previous, current) => current is LoadFilmsState,
+      listenWhen: (previous, current) => current is FeachingDatasucess,
       listener: (context, state) {},
       builder: (context, state) {
         if (state is LoadingState) {
           return ShimmerMovie();
-        } else if (state is LoadFilmsState) {
+        } else if (state is FeachingDatasucess) {
           return FavoriteMoviesScreen(films: state.films);
         }
-        // return Scaffold(
-        //   appBar: AppBar(
-        //     title: const Text('Favorite Movies'),
-        //   ),
-        //   body: const Center(
-        //     child: CircularProgressIndicator(),
-        //   ),
-        // );
+        return const SizedBox.shrink();
       },
     );
   }
