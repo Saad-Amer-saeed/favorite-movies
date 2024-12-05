@@ -23,7 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       final flimsWebServices = FlimsWebServices();
       final flimsRepository = FlimsRepository(flimsWebServices);
-      final films = await flimsRepository.getAllFlims();
+      final films = await flimsRepository.getAllFlims(event.endpoint);
       emit(FeachingDatasucess(films));
     } catch (e) {}
   }

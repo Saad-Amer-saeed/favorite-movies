@@ -29,6 +29,28 @@ import 'package:flutter/material.dart';
 //   runApp(const MyApp());
 // }
 
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       onGenerateRoute: RouteGenerator.getRoute,
+//       initialRoute: Routes.splashRoute,
+//       theme: getApplicationTheme(),
+//     );
+//   }
+// }
+
+import 'package:favoritemovies/home/bloc/home_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -36,17 +58,19 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateRoute: RouteGenerator.getRoute,
-      initialRoute: Routes.splashRoute,
-      theme: getApplicationTheme(),
+    return BlocProvider<HomeBloc>(
+      create: (context) =>
+          HomeBloc(), // Initialize HomeBloc and trigger the event
+      child: MaterialApp(
+        onGenerateRoute: RouteGenerator.getRoute,
+        initialRoute: Routes.splashRoute,
+        theme: getApplicationTheme(),
+      ),
     );
   }
 }
-
 
 
 

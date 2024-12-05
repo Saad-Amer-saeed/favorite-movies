@@ -15,7 +15,8 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    homeBloc.add(FeachingFlimsEvent()); // Trigger the event to fetch movies
+    homeBloc
+        .add(FeachingFlimsEvent('home')); // Trigger the event to fetch movies
   }
 
   @override
@@ -28,7 +29,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       bloc: homeBloc,
-      listenWhen: (previous, current) => current is FeachingDatasucess,
+      // listenWhen: (previous, current) => current is FeachingDatasucess,
+      buildWhen: (previous, current) => current is FeachingDatasucess,
       listener: (context, state) {},
       builder: (context, state) {
         if (state is LoadingState) {

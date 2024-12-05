@@ -6,8 +6,8 @@ class FlimsRepository {
 
   FlimsRepository(this.flimsWebServices);
 
-  Future<List<Flim>> getAllFlims() async {
-    final characters = await flimsWebServices.getAllFlims();
+  Future<List<Flim>> getAllFlims(String endpoint) async {
+    final characters = await flimsWebServices.getAllFlims(endpoint);
     return characters.map((flim) => Flim.fromJson(flim)).toList();
   }
 
