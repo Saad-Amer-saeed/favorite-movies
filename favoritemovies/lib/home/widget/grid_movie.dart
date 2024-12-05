@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteMoviesScreen extends StatelessWidget {
-  final List<Flim> films; // Assuming `films` is a list of `Flim` objects
+  final List<Flim> films;
 
   FavoriteMoviesScreen({required this.films});
 
@@ -14,18 +14,6 @@ class FavoriteMoviesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.lightdark,
-      appBar: AppBar(
-        title: const Text(AppStrings.favoriteMovies),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              color: Colors.white, // Set search icon color to white
-            ),
-            onPressed: () {},
-          ),
-        ],
-      ),
       body: FavoriteMoviesGrid(films: films),
     );
   }
@@ -33,38 +21,16 @@ class FavoriteMoviesScreen extends StatelessWidget {
 
 class FavoriteMoviesGrid extends StatelessWidget {
   final List<Flim> films;
-
-  const FavoriteMoviesGrid({Key? key, required this.films}) : super(key: key);
+  FavoriteMoviesGrid({
+    Key? key,
+    required this.films,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        // Padding(
-        //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-        //   child: TextField(
-        //     style: const TextStyle(
-        //         color: Colors.white), // Set typed text color to white
-        //     decoration: InputDecoration(
-        //       border: const OutlineInputBorder(),
-        //       hintText: 'Enter a search term',
-        //       hintStyle: const TextStyle(
-        //           color: Colors.white), // Set hint text color to white
-        //       suffixIcon: IconButton(
-        //         icon: const Icon(
-        //           Icons.search,
-        //           color: Colors.white, // Set search icon color to white
-        //         ),
-        //         onPressed: () {
-        //           context.read<HomeBloc>().add(FeachingFlimsEvent('sex'));
-        //           // Action when the search icon is pressed
-        //         },
-        //       ),
-        //     ),
-        //   ),
-        // ),
-        // Wrapping GridView with Expanded to allow it to take full space
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),

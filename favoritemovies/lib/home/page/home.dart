@@ -1,6 +1,8 @@
 import 'package:favoritemovies/home/bloc/home_bloc.dart';
 import 'package:favoritemovies/home/widget/grid_movie.dart';
+import 'package:favoritemovies/home/widget/search_movie.dart';
 import 'package:favoritemovies/home/widget/shimmer_movie.dart';
+import 'package:favoritemovies/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,16 +31,55 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       bloc: homeBloc,
-      // listenWhen: (previous, current) => current is FeachingDatasucess,
-      buildWhen: (previous, current) => current is FeachingDatasucess,
+      buildWhen: (previous, current) =>
+          current is FeachingDatasucess || current is LoadingState,
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is LoadingState) {
-          return ShimmerMovie();
-        } else if (state is FeachingDatasucess) {
-          return FavoriteMoviesScreen(films: state.films);
-        }
-        return const SizedBox.shrink();
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Favorite Movies'),
+          ),
+          body: Column(
+            children: [
+              SearchMovies(homeBloc: homeBloc),
+              // Container(
+              //   color: ColorManager.lightdark,
+              //   child: Padding(
+              //     padding:
+              //         const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              //     child: TextField(
+              //       controller: _controller,
+              //       style: const TextStyle(color: Colors.white),
+              //       decoration: InputDecoration(
+              //         border: const OutlineInputBorder(),
+              //         hintText: 'Enter a search term',
+              //         hintStyle: const TextStyle(color: Colors.white),
+              //         suffixIcon: IconButton(
+              //           icon: const Icon(
+              //             Icons.search,
+              //             color: Colors.white, // Set search icon color to white
+              //           ),
+              //           onPressed: () {
+              //             String searchTerm = _controller.text;
+              //             homeBloc.add(FeachingFlimsEvent(
+              //                 searchTerm)); // Trigger the event with search term
+              //           },
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // Handle state and show appropriate UI
+              if (state is LoadingState)
+                Expanded(child: ShimmerMovie()), // Show shimmer loading
+              if (state is FeachingDatasucess)
+                Expanded(
+                    child:
+                        FavoriteMoviesScreen(films: state.films)), // Show films
+              // Show empty space if no data
+            ],
+          ),
+        );
       },
     );
   }
