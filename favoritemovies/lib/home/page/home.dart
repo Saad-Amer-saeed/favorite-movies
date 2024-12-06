@@ -42,34 +42,7 @@ class _HomeState extends State<Home> {
           body: Column(
             children: [
               SearchMovies(homeBloc: homeBloc),
-              // Container(
-              //   color: ColorManager.lightdark,
-              //   child: Padding(
-              //     padding:
-              //         const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              //     child: TextField(
-              //       controller: _controller,
-              //       style: const TextStyle(color: Colors.white),
-              //       decoration: InputDecoration(
-              //         border: const OutlineInputBorder(),
-              //         hintText: 'Enter a search term',
-              //         hintStyle: const TextStyle(color: Colors.white),
-              //         suffixIcon: IconButton(
-              //           icon: const Icon(
-              //             Icons.search,
-              //             color: Colors.white, // Set search icon color to white
-              //           ),
-              //           onPressed: () {
-              //             String searchTerm = _controller.text;
-              //             homeBloc.add(FeachingFlimsEvent(
-              //                 searchTerm)); // Trigger the event with search term
-              //           },
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // Handle state and show appropriate UI
+
               if (state is LoadingState)
                 Expanded(child: ShimmerMovie()), // Show shimmer loading
               if (state is FeachingDatasucess)
