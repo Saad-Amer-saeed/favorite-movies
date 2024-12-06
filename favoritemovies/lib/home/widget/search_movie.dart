@@ -1,12 +1,12 @@
 import 'package:favoritemovies/home/bloc/home_bloc.dart';
 import 'package:favoritemovies/resources/color_manager.dart';
+import 'package:favoritemovies/resources/strings_manger.dart';
 import 'package:flutter/material.dart';
 
 class SearchMovies extends StatelessWidget {
   final HomeBloc homeBloc;
   final TextEditingController _controller = TextEditingController();
 
-  // Constructor to accept homeBloc as a parameter
   SearchMovies({
     required this.homeBloc,
     Key? key,
@@ -20,19 +20,19 @@ class SearchMovies extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
         child: TextField(
           controller: _controller,
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: ColorManager.white),
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
-            hintText: 'Enter a search term',
-            hintStyle: const TextStyle(color: Colors.white),
+            hintText: AppStrings.hintText,
+            hintStyle: TextStyle(color: ColorManager.white),
             suffixIcon: IconButton(
-              icon: const Icon(
+              icon: Icon(
                 Icons.search,
-                color: Colors.white, // Set search icon color to white
+                color: ColorManager.white,
               ),
               onPressed: () {
-                String searchTerm = _controller.text; // Use _controller here
-                homeBloc.add(FeachingFlimsEvent(searchTerm)); // Trigger search
+                String searchTerm = _controller.text;
+                homeBloc.add(FeachingFlimsEvent(searchTerm));
               },
             ),
           ),

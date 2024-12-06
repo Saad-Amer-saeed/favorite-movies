@@ -1,4 +1,3 @@
-import 'package:favoritemovies/home/page/home.dart';
 import 'package:favoritemovies/resources/color_manager.dart';
 import 'package:favoritemovies/resources/routes_manager.dart';
 import 'package:favoritemovies/splash/bloc/splash_bloc.dart';

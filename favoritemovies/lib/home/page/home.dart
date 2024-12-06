@@ -2,7 +2,7 @@ import 'package:favoritemovies/home/bloc/home_bloc.dart';
 import 'package:favoritemovies/home/widget/grid_movie.dart';
 import 'package:favoritemovies/home/widget/search_movie.dart';
 import 'package:favoritemovies/home/widget/shimmer_movie.dart';
-import 'package:favoritemovies/resources/color_manager.dart';
+import 'package:favoritemovies/resources/strings_manger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,18 +12,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final HomeBloc homeBloc = HomeBloc(); // Initialize the HomeBloc
+  final HomeBloc homeBloc = HomeBloc();
 
   @override
   void initState() {
     super.initState();
-    homeBloc
-        .add(FeachingFlimsEvent('home')); // Trigger the event to fetch movies
+    homeBloc.add(FeachingFlimsEvent('home'));
   }
 
   @override
   void dispose() {
-    homeBloc.close(); // Close the Bloc when the widget is disposed
+    homeBloc.close();
     super.dispose();
   }
 
@@ -37,19 +36,14 @@ class _HomeState extends State<Home> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Favorite Movies'),
+            title: const Text(AppStrings.favoriteMovies),
           ),
           body: Column(
             children: [
               SearchMovies(homeBloc: homeBloc),
-
-              if (state is LoadingState)
-                Expanded(child: ShimmerMovie()), // Show shimmer loading
+              if (state is LoadingState) Expanded(child: ShimmerMovie()),
               if (state is FeachingDatasucess)
-                Expanded(
-                    child:
-                        FavoriteMoviesScreen(films: state.films)), // Show films
-              // Show empty space if no data
+                Expanded(child: FavoriteMoviesScreen(films: state.films)),
             ],
           ),
         );
