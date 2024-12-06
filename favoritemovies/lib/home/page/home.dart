@@ -2,6 +2,7 @@ import 'package:favoritemovies/home/bloc/home_bloc.dart';
 import 'package:favoritemovies/home/widget/grid_movie.dart';
 import 'package:favoritemovies/home/widget/search_movie.dart';
 import 'package:favoritemovies/home/widget/shimmer_movie.dart';
+import 'package:favoritemovies/movie/page/movie.dart';
 import 'package:favoritemovies/resources/strings_manger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,18 @@ class _HomeState extends State<Home> {
       bloc: homeBloc,
       buildWhen: (previous, current) =>
           current is FeachingDatasucess || current is LoadingState,
-      listener: (context, state) {},
+      listenWhen: (previous, current) => current is NavigateToMoviePageState,
+      listener: (context, state) {
+        if (state is NavigateToMoviePageState) {
+          // Navigate to the desired page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Movie(),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -43,7 +55,11 @@ class _HomeState extends State<Home> {
               SearchMovies(homeBloc: homeBloc),
               if (state is LoadingState) Expanded(child: ShimmerMovie()),
               if (state is FeachingDatasucess)
-                Expanded(child: FavoriteMoviesScreen(films: state.films)),
+                Expanded(
+                    child: FavoriteMoviesScreen(
+                  films: state.films,
+                  homeBloc: homeBloc,
+                )),
             ],
           ),
         );

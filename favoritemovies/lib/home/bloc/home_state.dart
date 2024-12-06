@@ -10,4 +10,6 @@ class FeachingDatasucess extends HomeState {
   FeachingDatasucess(this.films);
 }
 
+class NavigateToMoviePageState extends HomeState {}
+
 class LoadingState extends HomeState {}

@@ -14,6 +14,7 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<FeachingFlimsEvent>(_feachingFlims);
+    on<NavigateToMoviePageEvent>(_navigateToMoviePage);
   }
 
   FutureOr<void> _feachingFlims(
@@ -26,5 +27,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final films = await flimsRepository.getAllFlims(event.endpoint);
       emit(FeachingDatasucess(films));
     } catch (e) {}
+  }
+
+  FutureOr<void> _navigateToMoviePage(
+      NavigateToMoviePageEvent event, Emitter<HomeState> emit) {
+    emit(NavigateToMoviePageState());
   }
 }

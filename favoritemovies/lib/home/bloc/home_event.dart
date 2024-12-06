@@ -8,3 +8,5 @@ class FeachingFlimsEvent extends HomeEvent {
 
   FeachingFlimsEvent(this.endpoint);
 }
+
+class NavigateToMoviePageEvent extends HomeEvent {}
