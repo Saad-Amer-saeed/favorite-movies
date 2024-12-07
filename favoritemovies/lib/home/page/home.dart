@@ -1,8 +1,10 @@
+import 'package:favoritemovies/favorite/page/favorite.dart';
 import 'package:favoritemovies/home/bloc/home_bloc.dart';
 import 'package:favoritemovies/home/widget/grid_movie.dart';
 import 'package:favoritemovies/home/widget/search_movie.dart';
 import 'package:favoritemovies/home/widget/shimmer_movie.dart';
 import 'package:favoritemovies/movie/page/movie.dart';
+import 'package:favoritemovies/resources/color_manager.dart';
 import 'package:favoritemovies/resources/strings_manger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,7 +51,25 @@ class _HomeState extends State<Home> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text(AppStrings.favoriteMovies),
+            title: const Text('Favorite Movies'),
+            actions: [
+              IconButton(
+                icon: Icon(
+                  Icons.favorite_outline,
+                  color: ColorManager.white, // Set the icon color to white
+                  size: 25.0, // Increase the icon size
+                ),
+                onPressed: () {
+                  // Handle the favorite button press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FavoriteFlims(),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
           body: Column(
             children: [

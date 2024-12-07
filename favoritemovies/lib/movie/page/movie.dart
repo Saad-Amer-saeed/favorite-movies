@@ -1,3 +1,4 @@
+import 'package:favoritemovies/favorite/page/favorite.dart';
 import 'package:favoritemovies/movie/bloc/movie_bloc.dart';
 import 'package:favoritemovies/resources/color_manager.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +52,24 @@ class _MovieState extends State<Movie> {
             backgroundColor: ColorManager.lightdark,
             appBar: AppBar(
               backgroundColor: ColorManager.lightdark,
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite_outline,
+                    color: ColorManager.white, // Set the icon color to white
+                    size: 25.0, // Increase the icon size
+                  ),
+                  onPressed: () {
+                    // Handle the favorite button press
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FavoriteFlims(),
+                      ),
+                    );
+                  },
+                ),
+              ],
               leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: ColorManager.white),
                 onPressed: () => Navigator.of(context).pop(),
