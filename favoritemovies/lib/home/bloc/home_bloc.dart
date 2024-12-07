@@ -20,7 +20,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> _feachingFlims(
       FeachingFlimsEvent event, Emitter<HomeState> emit) async {
     emit(LoadingState());
-    print(event.endpoint);
     try {
       final flimsWebServices = FlimsWebServices();
       final flimsRepository = FlimsRepository(flimsWebServices);

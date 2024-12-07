@@ -6,7 +6,7 @@ class FlimsWebServices {
 
   FlimsWebServices() {
     BaseOptions options = BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: baseUrlForFeachAllFilm,
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 20), // 20 seconds
       receiveTimeout: const Duration(seconds: 20), // 20 seconds
@@ -24,7 +24,6 @@ class FlimsWebServices {
       List<dynamic> searchResults = response.data['Search'] ?? [];
 
       // Print the 'Search' object
-      print('Search Results: $searchResults');
 
       return searchResults;
     } catch (e) {
