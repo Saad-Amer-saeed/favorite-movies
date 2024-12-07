@@ -37,10 +37,11 @@ class _HomeState extends State<Home> {
       listener: (context, state) {
         if (state is NavigateToMoviePageState) {
           // Navigate to the desired page
+
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Movie(),
+              builder: (context) => Movie(imdbID: state.imdbID),
             ),
           );
         }

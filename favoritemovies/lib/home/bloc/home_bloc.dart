@@ -31,6 +31,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> _navigateToMoviePage(
       NavigateToMoviePageEvent event, Emitter<HomeState> emit) {
-    emit(NavigateToMoviePageState());
+    emit(NavigateToMoviePageState(imdbID: event.imdbID));
   }
 }

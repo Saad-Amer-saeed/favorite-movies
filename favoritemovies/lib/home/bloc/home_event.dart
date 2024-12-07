@@ -9,4 +9,8 @@ class FeachingFlimsEvent extends HomeEvent {
   FeachingFlimsEvent(this.endpoint);
 }
 
-class NavigateToMoviePageEvent extends HomeEvent {}
+class NavigateToMoviePageEvent extends HomeEvent {
+  final String imdbID;
+
+  NavigateToMoviePageEvent(this.imdbID);
+}

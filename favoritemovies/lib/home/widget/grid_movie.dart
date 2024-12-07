@@ -50,7 +50,8 @@ class FavoriteMoviesGrid extends StatelessWidget {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(12),
                     onTap: () {
-                      homeBloc.add(NavigateToMoviePageEvent());
+                      homeBloc.add(
+                          NavigateToMoviePageEvent((films[index].imdbID!)));
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),

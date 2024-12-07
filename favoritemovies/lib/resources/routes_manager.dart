@@ -17,8 +17,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Splash());
       case Routes.home:
         return MaterialPageRoute(builder: (_) => Home());
-      case Routes.movie:
-        return MaterialPageRoute(builder: (_) => Movie());
+      // case Routes.movie:
+      //   return MaterialPageRoute(builder: (_) => Movie());
       default:
         return unDefinedRoute();
     }
