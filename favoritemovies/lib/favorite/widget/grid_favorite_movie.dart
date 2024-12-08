@@ -1,3 +1,4 @@
+import 'package:favoritemovies/favorite/bloc/favorite_bloc.dart';
 import 'package:favoritemovies/home/bloc/home_bloc.dart';
 import 'package:favoritemovies/home/data/models/flim.dart';
 import 'package:favoritemovies/resources/color_manager.dart';
@@ -6,9 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteUserMoviesScreen extends StatelessWidget {
   final List<Flim> favoriteMovie;
+  final FavoriteBloc favoriteBloc;
   // final HomeBloc homeBloc;
   FavoriteUserMoviesScreen({
     required this.favoriteMovie,
+    required this.favoriteBloc,
   });
 
   @override
@@ -16,6 +19,7 @@ class FavoriteUserMoviesScreen extends StatelessWidget {
     return Scaffold(
       body: FavoriteMoviesGrid(
         favoriteMovie: favoriteMovie,
+        favoriteBloc: favoriteBloc,
       ),
     );
   }
@@ -23,10 +27,12 @@ class FavoriteUserMoviesScreen extends StatelessWidget {
 
 class FavoriteMoviesGrid extends StatelessWidget {
   final List<Flim> favoriteMovie;
+  final FavoriteBloc favoriteBloc;
 
   FavoriteMoviesGrid({
     Key? key,
     required this.favoriteMovie,
+    required this.favoriteBloc,
   }) : super(key: key);
 
   @override
@@ -53,10 +59,46 @@ class FavoriteMoviesGrid extends StatelessWidget {
                   ),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(12),
+                    // onTap: () {
+                    //   favoriteBloc.add(
+                    //       RemoveFavoriteUserFlim(favoriteMovie[index].imdbID!));
+                    // },
+
                     onTap: () {
-                      // homeBloc.add(
-                      //     NavigateToMoviePageEvent((films[index].imdbID!)));
+                      // Show the alert dialog
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Remove Favorite'),
+                            content: Text(
+                                'Do you want to remove this film from favorites?'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  // Close the dialog and don't remove the film
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('No'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  // Close the dialog and remove the film from favorites
+                                  favoriteBloc.add(
+                                    RemoveFavoriteUserFlim(
+                                        favoriteMovie[index].imdbID!),
+                                  );
+                                  Navigator.of(context)
+                                      .pop(); // Close the dialog
+                                },
+                                child: Text('Yes'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     },
+
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.network(

@@ -14,7 +14,6 @@ class Movie extends StatefulWidget {
 }
 
 class _MovieState extends State<Movie> {
-  bool _isFavorite = false;
   final MovieBloc movieBloc = MovieBloc();
 
   @override
@@ -131,15 +130,17 @@ class _MovieState extends State<Movie> {
                         const Spacer(),
                         IconButton(
                           icon: Icon(
-                            _isFavorite
+                            state.isInFavoriteList
                                 ? Icons.favorite
                                 : Icons.favorite_border,
-                            color: _isFavorite ? Colors.red : Colors.white,
+                            color: state.isInFavoriteList
+                                ? Colors.red
+                                : Colors.white,
                             size: 30,
                           ),
                           onPressed: () {
                             setState(() {
-                              _isFavorite = !_isFavorite;
+                              state.isInFavoriteList = true;
                             });
                             movieBloc.add(AddingFavoriteFlim(Flim(
                                 poster: state.film.image,

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:bloc/bloc.dart';
 import 'package:favoritemovies/favorite/data/favoritedata.dart';
 import 'package:favoritemovies/home/data/models/flim.dart';
@@ -24,7 +26,11 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       final requsetFlimRepository = RequsetFlimRepository(flimsWebServices);
       final fetchedFilm =
           await requsetFlimRepository.geRequsetflim(event.endpoint);
-      emit(FeachingMoviesucess(fetchedFilm));
+
+      bool isInFavoriteList =
+          favoriteMovie.any((film) => film.imdbID == event.endpoint);
+
+      emit(FeachingMoviesucess(fetchedFilm, isInFavoriteList));
     } catch (e) {
       print('Error fetching film details: $e');
     }
@@ -32,6 +38,13 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
 
   FutureOr<void> _addingFavoriteFlim(
       AddingFavoriteFlim event, Emitter<MovieState> emit) async {
-    favoriteMovie.add(event.flim);
+    // Check if the film is already in the favorite list
+    bool isInFavoriteList =
+        favoriteMovie.any((film) => film.imdbID == event.flim.imdbID);
+
+    // Add to favorites if not already in the list
+    if (!isInFavoriteList) {
+      favoriteMovie.add(event.flim);
+    }
   }
 }

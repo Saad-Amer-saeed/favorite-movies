@@ -3,4 +3,8 @@ part of 'favorite_bloc.dart';
 @immutable
 sealed class FavoriteEvent {}
 
-class FavoriteUserFlim extends FavoriteEvent {}
+class RemoveFavoriteUserFlim extends FavoriteEvent {
+  final String imdbID;
+
+  RemoveFavoriteUserFlim(this.imdbID);
+}

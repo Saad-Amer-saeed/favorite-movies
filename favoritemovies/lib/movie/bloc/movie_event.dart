@@ -12,5 +12,7 @@ class FeachingRequsetMovieEvent extends MovieEvent {
 class AddingFavoriteFlim extends MovieEvent {
   Flim flim;
 
-  AddingFavoriteFlim(this.flim);
+  AddingFavoriteFlim(
+    this.flim,
+  );
 }

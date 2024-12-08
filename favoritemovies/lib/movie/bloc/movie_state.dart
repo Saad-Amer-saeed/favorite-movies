@@ -7,7 +7,8 @@ final class MovieInitial extends MovieState {}
 
 class FeachingMoviesucess extends MovieState {
   RequsetFlim film; // Assuming Film is the type of the films object
-  FeachingMoviesucess(this.film);
+  bool isInFavoriteList;
+  FeachingMoviesucess(this.film, this.isInFavoriteList);
 }
 // class AddFavoriteList extends MovieState {
 //   Flim film; // Assuming Film is the type of the films object
@@ -15,3 +16,5 @@ class FeachingMoviesucess extends MovieState {
 // }
 
 class LoadingState extends MovieState {}
+
+class ToglebuttonState extends MovieState {}
