@@ -15,16 +15,13 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
 
   FutureOr<void> _favoriteUserFlim(
       RemoveFavoriteUserFlim event, Emitter<FavoriteState> emit) async {
-    // Find the index of the movie with the specified imdbID
     final indexToRemove =
         favoriteMovie.indexWhere((movie) => movie.imdbID == event.imdbID);
 
-    // If the movie exists (index >= 0), remove it from the list
     if (indexToRemove != -1) {
       favoriteMovie.removeAt(indexToRemove);
     }
 
-    // Emit the updated state
     emit(FavoriteMovieUserState());
   }
 }

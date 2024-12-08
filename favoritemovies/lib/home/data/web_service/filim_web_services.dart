@@ -17,13 +17,9 @@ class FlimsWebServices {
 
   Future<List<dynamic>> getAllFlims(String endpoint) async {
     try {
-      // Send GET request
       Response response = await dio.get(endpoint);
 
-      // Access the 'Search' key from the response data
       List<dynamic> searchResults = response.data['Search'] ?? [];
-
-      // Print the 'Search' object
 
       return searchResults;
     } catch (e) {

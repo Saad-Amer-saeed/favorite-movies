@@ -5,7 +5,6 @@ import 'package:favoritemovies/home/widget/search_movie.dart';
 import 'package:favoritemovies/home/widget/shimmer_movie.dart';
 import 'package:favoritemovies/movie/page/movie.dart';
 import 'package:favoritemovies/resources/color_manager.dart';
-import 'package:favoritemovies/resources/strings_manger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,8 +37,6 @@ class _HomeState extends State<Home> {
       listenWhen: (previous, current) => current is NavigateToMoviePageState,
       listener: (context, state) {
         if (state is NavigateToMoviePageState) {
-          // Navigate to the desired page
-
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -56,11 +53,10 @@ class _HomeState extends State<Home> {
               IconButton(
                 icon: Icon(
                   Icons.favorite_outline,
-                  color: ColorManager.white, // Set the icon color to white
-                  size: 25.0, // Increase the icon size
+                  color: ColorManager.white,
+                  size: 25.0,
                 ),
                 onPressed: () {
-                  // Handle the favorite button press
                   Navigator.push(
                     context,
                     MaterialPageRoute(

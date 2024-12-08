@@ -6,7 +6,7 @@ sealed class HomeState {}
 final class HomeInitial extends HomeState {}
 
 class FeachingDatasucess extends HomeState {
-  List<Flim> films; // Assuming Film is the type of the films object
+  List<Flim> films;
   FeachingDatasucess(this.films);
 }
 

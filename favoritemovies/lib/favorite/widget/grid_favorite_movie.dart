@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class FavoriteUserMoviesScreen extends StatelessWidget {
   final List<Flim> favoriteMovie;
   final FavoriteBloc favoriteBloc;
-  // final HomeBloc homeBloc;
   FavoriteUserMoviesScreen({
     required this.favoriteMovie,
     required this.favoriteBloc,
@@ -59,46 +58,36 @@ class FavoriteMoviesGrid extends StatelessWidget {
                   ),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(12),
-                    // onTap: () {
-                    //   favoriteBloc.add(
-                    //       RemoveFavoriteUserFlim(favoriteMovie[index].imdbID!));
-                    // },
-
                     onTap: () {
-                      // Show the alert dialog
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Remove Favorite'),
-                            content: Text(
+                            title: const Text('Remove Favorite'),
+                            content: const Text(
                                 'Do you want to remove this film from favorites?'),
                             actions: <Widget>[
                               TextButton(
                                 onPressed: () {
-                                  // Close the dialog and don't remove the film
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('No'),
+                                child: const Text('No'),
                               ),
                               TextButton(
                                 onPressed: () {
-                                  // Close the dialog and remove the film from favorites
                                   favoriteBloc.add(
                                     RemoveFavoriteUserFlim(
                                         favoriteMovie[index].imdbID!),
                                   );
-                                  Navigator.of(context)
-                                      .pop(); // Close the dialog
+                                  Navigator.of(context).pop();
                                 },
-                                child: Text('Yes'),
+                                child: const Text('Yes'),
                               ),
                             ],
                           );
                         },
                       );
                     },
-
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.network(

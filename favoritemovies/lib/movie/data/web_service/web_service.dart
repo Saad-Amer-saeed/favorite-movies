@@ -17,17 +17,13 @@ class RequsetFlimsWebServices {
 
   Future<Map<String, dynamic>> geRequsetflim(String endpoint) async {
     try {
-      // Send GET request
       Response response = await dio.get(endpoint);
 
-      // Access the 'Search' key from the response data
       Map<String, dynamic> rqusetfilm = response.data;
 
       return rqusetfilm;
     } catch (e) {
-      print(e.toString());
-      // Return an empty map on error
-      return {}; // You can also throw an exception or return a default value
+      return {};
     }
   }
 }

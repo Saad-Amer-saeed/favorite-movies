@@ -10,9 +10,4 @@ class FlimsRepository {
     final characters = await flimsWebServices.getAllFlims(endpoint);
     return characters.map((flim) => Flim.fromJson(flim)).toList();
   }
-
-  // Future<List<Quote>> getCharacterQuotes(String charName) async {
-  //   final quotes = await charactersWebServices.getCharacterQuotes(charName);
-  //   return quotes.map((charQuotes) => Quote.fromJson(charQuotes)).toList();
-  // }
 }
