@@ -50,23 +50,23 @@ class _MovieState extends State<Movie> {
         if (state is FeachingMoviesucess) {
           return Scaffold(
             appBar: AppBar(
-              actions: [
-                IconButton(
-                  icon: Icon(
-                    Icons.favorite_outline,
-                    color: ColorManager.white, // Set the icon color to white
-                    size: 25.0, // Increase the icon size
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FavoriteFlims(),
-                      ),
-                    );
-                  },
-                ),
-              ],
+              // actions: [
+              //   IconButton(
+              //     icon: Icon(
+              //       Icons.favorite_outline,
+              //       color: ColorManager.white, // Set the icon color to white
+              //       size: 25.0, // Increase the icon size
+              //     ),
+              //     onPressed: () {
+              //       Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //           builder: (context) => FavoriteFlims(),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ],
               leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: ColorManager.white),
                 onPressed: () => Navigator.of(context).pop(),

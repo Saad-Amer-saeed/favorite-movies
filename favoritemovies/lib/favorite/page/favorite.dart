@@ -22,6 +22,10 @@ class FavoriteFlims extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(AppStrings.favorite),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: ColorManager.white),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
           ),
           body: Column(
             children: [
