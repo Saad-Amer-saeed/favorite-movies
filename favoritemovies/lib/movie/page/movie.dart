@@ -1,4 +1,5 @@
 import 'package:favoritemovies/favorite/page/favorite.dart';
+import 'package:favoritemovies/home/data/models/flim.dart';
 import 'package:favoritemovies/movie/bloc/movie_bloc.dart';
 import 'package:favoritemovies/resources/color_manager.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,6 @@ class _MovieState extends State<Movie> {
                     size: 25.0, // Increase the icon size
                   ),
                   onPressed: () {
-                    // Handle the favorite button press
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -141,6 +141,9 @@ class _MovieState extends State<Movie> {
                             setState(() {
                               _isFavorite = !_isFavorite;
                             });
+                            movieBloc.add(AddingFavoriteFlim(Flim(
+                                poster: state.film.image,
+                                imdbID: state.film.imdbID)));
                           },
                         ),
                       ],

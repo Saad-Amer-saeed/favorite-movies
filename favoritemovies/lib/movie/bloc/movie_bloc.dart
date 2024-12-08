@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:favoritemovies/favorite/data/favoritedata.dart';
+import 'package:favoritemovies/home/data/models/flim.dart';
 import 'package:favoritemovies/movie/data/models/movie_model.dart';
 import 'package:favoritemovies/movie/data/repository/movie_repository.dart';
 import 'package:favoritemovies/movie/data/web_service/web_service.dart';
@@ -11,6 +13,7 @@ part 'movie_state.dart';
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
   MovieBloc() : super(MovieInitial()) {
     on<FeachingRequsetMovieEvent>(_feachingRequsetMovie);
+    on<AddingFavoriteFlim>(_addingFavoriteFlim);
   }
 
   FutureOr<void> _feachingRequsetMovie(
@@ -25,5 +28,10 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     } catch (e) {
       print('Error fetching film details: $e');
     }
+  }
+
+  FutureOr<void> _addingFavoriteFlim(
+      AddingFavoriteFlim event, Emitter<MovieState> emit) async {
+    favoriteMovie.add(event.flim);
   }
 }
