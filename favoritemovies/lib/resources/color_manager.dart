@@ -7,4 +7,5 @@ class ColorManager {
       Colors.grey.shade800; // Correct way to use grey 800 shade
   static Color gray500 = Colors.grey.shade500;
   static Color white = Colors.white;
+  static Color amber = Colors.amber;
 }

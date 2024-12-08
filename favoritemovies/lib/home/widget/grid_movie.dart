@@ -12,7 +12,6 @@ class FavoriteMoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorManager.lightdark,
       body: FavoriteMoviesGrid(films: films, homeBloc: homeBloc),
     );
   }

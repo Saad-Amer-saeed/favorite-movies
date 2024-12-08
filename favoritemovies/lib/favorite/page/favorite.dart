@@ -1,3 +1,5 @@
+import 'package:favoritemovies/resources/color_manager.dart';
+import 'package:favoritemovies/resources/strings_manger.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteFlims extends StatelessWidget {
@@ -5,10 +7,9 @@ class FavoriteFlims extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello World App'),
-        backgroundColor: Colors.amber,
+        title: Text(AppStrings.favorite),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Hello, World!',
           style: TextStyle(

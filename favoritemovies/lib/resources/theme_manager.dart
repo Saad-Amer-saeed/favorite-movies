@@ -6,9 +6,11 @@ import 'values_manger.dart';
 ThemeData getApplicationTheme() {
   return ThemeData(
     // main colors of the app
+
     primaryColor: ColorManager.lightdark,
     primaryColorLight: ColorManager.lightdark,
     primaryColorDark: ColorManager.lightdark,
+    scaffoldBackgroundColor: ColorManager.lightdark,
     // disabledColor: ColorManager
     //     .grey1, // will be used in case of a disabled button for example
     // splashColor: ColorManager.primaryOpacity70,
@@ -29,9 +31,11 @@ ThemeData getApplicationTheme() {
     //     shadowColor: ColorManager.primaryOpacity70,
     //     titleTextStyle: getRegularStyle(
     //         color: ColorManager.white, fontSize: FontSize.s16)),
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
         centerTitle: true,
-        color: ColorManager.dark,
+        // color: ColorManager.dark,
+        backgroundColor: ColorManager.dark,
+
         // elevation: AppSize.s4,
         // shadowColor: ColorManager.primaryOpacity70,
         // titleTextStyle: getRegularStyle(

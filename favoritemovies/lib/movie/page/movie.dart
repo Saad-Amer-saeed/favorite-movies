@@ -49,9 +49,7 @@ class _MovieState extends State<Movie> {
 
         if (state is FeachingMoviesucess) {
           return Scaffold(
-            backgroundColor: ColorManager.lightdark,
             appBar: AppBar(
-              backgroundColor: ColorManager.lightdark,
               actions: [
                 IconButton(
                   icon: Icon(
@@ -120,7 +118,7 @@ class _MovieState extends State<Movie> {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
                       children: [
-                        const Icon(Icons.star, color: Colors.amber),
+                        Icon(Icons.star, color: ColorManager.amber),
                         const SizedBox(width: 8),
                         Text(
                           state.film.rating.toString(),
